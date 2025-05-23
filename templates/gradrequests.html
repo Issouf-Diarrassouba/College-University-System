@@ -1,0 +1,91 @@
+<!--------------------DOCUMENT DESCRIPTION------------------ 
+-This HTML shows the table of all the students applying for graduation
+-Visible by: Admin, GA
+--------------------DOCUMENT DESCRIPTION--------------------> 
+
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <link rel="stylesheet" href="../static/std_styl.css" />
+        <title>Graduation Requests</title>
+    </head>
+
+    <body class = "main_body">
+        <div class = "header">
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <h2>Graduation Requests</h2>
+            <br/>
+            <br/>
+            <br/>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Advisee ID</th>
+                    <th>First</th>
+                    <th>Last</th>
+                    <th>Advisor ID</th>
+                    <th>Passed Audit?</th>
+                    <th>Graduate?</th>
+                </tr>
+            </thead>
+
+            
+            <tbody>
+
+                {% for i in x %}
+                <tr>
+                    {%if i.approved != 2 %}
+                        <td>{{i.advisee_id}}</td>
+                        <td>{{i.firstname}}</td>
+                        <td>{{i.lastname}}</td>
+                        <td>{{i.advisor_id}}</td>
+                        {% if i.approved == 1 %}
+                        <td>Yes</td>
+                        {% else %}
+                        <td>No</td>
+                        {% endif %}
+                        <td><a href = "/graduate/{{i.advisee_id}}" > Graduate Here </a></td>
+                        <td><a href = "/rejectgrad/{{i.advisee_id}}"> Reject Graduation</a></td>
+                    {%endif%}
+                </tr>
+                {% endfor %}
+            </tbody>
+            
+        </table>
+        {% if user_type == 'Systems Administrator' %}
+        <p><a href = "/faculty"> go back </a> </p>
+        <button onclick="downloadTable()">Download Grad Request Table</button>
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+        <script>
+          function downloadTable() {
+            var table = document.getElementById("myTable");
+      
+            // Use HTML2Canvas to capture the table as an image
+            html2canvas(table).then(function(canvas) {
+              // Convert the canvas to a PNG image
+              var imgData = canvas.toDataURL('image/png');
+      
+              // Create a download link for the PNG file
+              var link = document.createElement('a');
+              link.href = imgData;
+              link.download = 'table.png';
+      
+              // Add the link to the document and click it to download the file
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+            });
+          }
+        </script>
+        {%else%}
+    <p><a href = "/faculty"><button>Return</button></a> </p>
+    {% endif %}
+    </body>
+</html>

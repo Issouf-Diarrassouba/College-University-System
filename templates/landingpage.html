@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link rel="stylesheet" href="../static/landing_page.css" />
+    </head>
+    <body class = "landing_page">
+        <br / >
+        <br / >
+        <br / >
+        <br />
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+          <div class="alert alert-danger" role="alert" style = "color: red"> {{ message }}</div>
+          {% endfor %}
+        {% endif %}
+       {% endwith %}
+       <center>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <div class = "home_link">
+        <a href = '/login'><button>Login</button></a> <!--login page link-->
+        <br />
+        <a href = '/ApplicantRegister'><button>Apply</button></a><!--create application , url chage-->
+        <a href = '/reset'><button>Reset Database</button></a>
+      </div>
+      </center>
+    </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/rec+Transcript.css">
+
+</head>
+<body>
+  {% for message in get_flashed_messages() %}
+      <div class="alert2" >{{message}}</div>
+  {% endfor %}
+  {% if session.get('id') != None: %}
+    user: {{session['id']}}
+    {% if showRecomender == True: %}
+    <form method = "POST" action= "/sendletters/submit/recomender" >
+      <strong>To: {{ recrequest['email'] }}</strong>
+      <h6>Hello, {{ recrequest['writername']}}</h6>
+      <p>
+        This is an automated recomendation request sent by {{recrequest['sentfrom']}}. This student has requested that you fill out a recomendation.
+        You can use the area below to fill out the recomendation.
+      </p>
+      <br>
+      <input type="text" id="recomendationresponce" name="recomendationresponce" size=30>
+      <input type="hidden" id="writername" name="writername" value="{{recrequest['writername']}}">
+      <input type="hidden" id="writeremail" name="writeremail" value="{{recrequest['email']}}">
+      <input type="hidden" id="writertitle" name="writertitle" value="{{recrequest['title']}}">
+      <input type="hidden" id="writeraffiliation" name="writeraffiliation" value="{{recrequest['affiliation']}}">
+      <label for="recomendationresponce">Recomendation:</label><br>
+      <input type="submit" value="Submit">
+    {% endif %}
+    <h1>Recomendation Letters</h1>
+    <h2>Sent Requests</h2>
+    {% if requests != None: %}
+      <ul>
+      {% for request in requests: %}
+        <li> {{request['sender']}} - {{request['senderemail']}}</li>
+      {% endfor %}
+      </ul>
+    {% else: %}
+      No letters to display
+    {% endif %}
+    <H2>Send a new request!</H2>
+    {% if cansend == True: %}
+    <form method = "POST" action= "/sendletters/send" >
+      <h6></h6>
+      <br>
+      <input type="text" id="writername" name="writername">
+      <label for="writername">Name:</label><br>
+      <input type="email" id="writeremail" name="writeremail">
+      <label for="writeremail">Email:</label><br>
+      <input type="text" id="writertitle" name="writertitle">
+      <label for="writertitle">Title:</label><br>
+      <input type="text" id="writeraffiliation" name="writeraffiliation">
+      <label for="writeraffiliation">Affiliation:</label><br>
+      <input type="submit" value="Submit">
+    </form>
+    {% else: %}
+      <p>You have sent the max number of recomendation letter requests.</p>
+    {% endif %}
+  {% else: %}
+    <h1>You must be logged in to view this page!</h1>
+   
+  {% endif %}
+  <button><a href="/applicantDashboard"> Home</a></button>
+  <button><a href="/"> out</a></button>
+</body>
+</html>

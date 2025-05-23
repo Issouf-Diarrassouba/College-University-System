@@ -1,0 +1,46 @@
+</html>
+<html lang="en">
+<head>
+	<title> Staff logged in: </title>
+</head>
+
+<body>
+
+
+<h1> Staff Information: </h1>
+
+
+<h3 style="font-family: cursive"></h3>
+	<ul>
+	
+    
+
+	<li>Name:{{session['name']}}</li>
+	<li>Staff ID:{{session['workerID']}}</li>
+	<li>Position:{{session['hasrole']}}
+		
+		<div class ="container">
+			<form action= "/results" class= "search-bar" method= "POST">
+			  <input type= "text" placeholder="" name= "q">
+			  <input type= "submit">
+			</form>
+		  </div>
+		  
+		
+
+
+
+	</ul>
+	<br>
+
+<button><a href= "/logout"> logout </a></button>
+<br> 
+
+<button><a href= "/pendingreview"> Review </a></button>
+
+</body>
+
+
+
+
+</html>

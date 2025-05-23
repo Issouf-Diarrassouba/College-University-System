@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../static/std_styl.css" />
+        <title>View/Edit Thesis</title>
+    </head>
+
+    <body class = 'main_body'>
+        <h3>Current Thesis</h3>
+        <p class = 'norm_l'>{{x.thesis}}</p>
+
+        {% if x.approved == 0 %}
+        <p>Not Approved</p>
+        {% elif x.approved == 1 %}
+        <p>Approved</p>
+        {% endif %}
+
+        <form id = changethesis method = 'POST'>
+            <p>Change Thesis:</p>
+            <input type = "text" name = "thesis"> <br>
+            <input type = "submit" name = "submit">
+        </form>
+
+        <a href = "javascript:history.back()"><button>Return</button></a><br />
+        
+    </body>
+</html>

@@ -1,0 +1,88 @@
+
+<!--------------------DOCUMENT DESCRIPTION------------------ 
+-This HTML shows the students's directory
+-They view ALL their info here
+-Visible by: Admin, GA, Advisor, Student
+--------------------DOCUMENT DESCRIPTION--------------------> 
+
+<!DOCTYPE html>
+<html>
+    <head>
+      <link rel="stylesheet" href="../static/std_styl.css" />
+      <title> {{x.firstname}} {{x.lastname}} Directory</title>
+    </head>
+
+            
+    <body class="main_body">
+      <div class = "header">
+      <center>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <h2>{{x.firstname}} {{x.lastname}} Directory</h2>
+        <br/>
+        <br/>
+        <br/>
+      </center>
+    </div>
+      <br />
+      <center>
+        {% if user_type == 'Student' %}
+          <a href="/logout"><button>logout</button></a><br />
+          {% elif user_type == 'Systems Administrator'%}
+          <a href = "javascript:history.back()"><button>Return to All Students</button></a><br />
+        {% endif %}
+        <br />
+        {% if x.suspended == 1 %}
+        <h1>You are on Academic Suspension</h1>
+        {% endif %}
+        {% if form_status['advising_status']==0 %}
+        <label class= "warning">Advising form need to be filled out</label>
+        {% elif form_status['form_status']==0 %}
+        <label class= "warning">Waiting for advisor to approve your form</label>
+        {% endif %}
+        <h3>Enrollment: {{x.type}}</h3>
+        <h3>Advisor:{{adname.firstname}} {{adname.lastname}} </h3>
+        <a href = '/c_catalogue/{{id}}'><button>Course Catalogue</button></a>
+        <a href = '/ad_form/{{id}}'><button>Advising Form</button></a>
+        {% if session['user_type'] == "Student": %}
+          <a href = '/transcript'><button>View Transcript</button></a>
+        {% elif session['user_type'] == "Systems Administrator" or session['user_type'] == 'Faculty'%}
+        <a href="/transcript/{{x.uid}}"><button>View Transcript</button></a>
+          {% endif %}
+        
+        <a href = '/c_registered/{{id}}'><button>Add/Drop</button></a>
+        {%if grad_request.approved == 2 and not has_form1 %}
+          <h4 class= "warning">Unfortunately you do not meet the requirements to graduate please try and submit form1 again or speak to your advisor</h4>
+        {%endif%}
+        {%if grad_request.approved == 1 or grad_request.approved == 0%}
+          <h4 class= "warning">Application for Graduation Pending...</h4>
+        {%endif%}
+
+          
+          {% if user_type == 'Student' or user_type == 'Systems Administrator'%}
+            <a href="/personalinfo/{{x.uid}}"><button>Personal Information</button></a>
+          {% endif %}
+
+          
+
+          {% if has_form1 %}
+          <a href="/viewform1/{{x.uid}}"><button>View Form 1</button></a>
+          {% if x.suspended == 0%}
+          <a href="/applyforGrad/{{x.uid}}"><button>Apply For Graduation</button></a>
+          {% endif %}
+          {% else %}
+          <a href = "/form1/{{x.uid}}" ><button> Fill Out Form 1</button></a>
+          {% endif %}
+
+          {% if enrolledas == 'PhD' %}
+          <a href = "/studentaccessthesis/{{x.uid}}"><button>View/Edit Thesis</button></a>
+          {% endif %}
+
+          
+
+      </center>
+    </body>
+
+</html>

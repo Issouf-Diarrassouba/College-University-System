@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../static/std_styl.css" />
+    </head>
+    <body class = "main_body">
+        <div class= "header">
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <h2>{{name}}'s Advising Form</h2>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+        </div>
+        <a href = '/facultyviewstudents'><button>Back</button></a>
+        <a href = '/clear_ad_form/{{id}}'><button>Clear Advising Status</button></a>
+        <br />
+        <br />
+        <br/>
+        {% if catalogue == None %}
+            <h3>Nothing in Advising Form</h3>
+        {% else %}
+            <table>
+            <tr>
+                <th>CourseID</th>
+                <th>DEPT</th>
+                <th>Course Number</th>
+                <th>Title</th>
+                <th>Credit Hour</th>
+                <th>loc</th>
+                <th>Day</th>
+                <th>Time</th>
+                <th>Instructor Name </th>
+            </tr>
+            {% for course in catalogue%}
+                <tr>
+                    <td>{{catalogue[course]['cid']}}</td>
+                    <td>{{catalogue[course]['dept']}}</td>
+                    <td>{{catalogue[course]['cnum']}}</td>
+                    <td>{{catalogue[course]['title']}}</td>
+                    <td>{{catalogue[course]['cred']}}</td>
+                    <td>{{catalogue[course]['loc']}}</td>
+                    <td>{{catalogue[course]['day']}}</td>
+                    <td>{{catalogue[course]['time']}}</td>
+                    <td>{{catalogue[course]['ins_name']}}</td>
+                </tr>
+            {% endfor %}
+            </table>
+            <a href = '/approve_form/{{id}}'><button>Approve</button></a>
+            <a href = '/reject_form/{{id}}'><button>Reject</button></a>
+        {% endif %}
+    </body>
+</html>

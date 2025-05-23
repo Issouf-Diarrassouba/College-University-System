@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="../static/std_styl.css" />
+    </head>
+    <body class = "main_body">
+        <div class = "header">
+            <br/>
+            <br/>
+            <br/>
+            <h2>Transcript</h2>
+            <br/>
+            <br/>
+            <h2>Student ID: {{session['id']}}</h2>
+        </div>
+        {%if session['user_type'] == "Student": %}
+            <a href = '/student/{{session['id']}}'><button>Home</button></a>
+        {% else %}
+            <a href = '/faculty/{{session['id']}}'><button>Home</button></a>
+        {% endif %}
+        <br />
+        <br />
+        <table>
+            <tr>
+                <th>Course ID</th>
+                <th>Department</th>
+                <th>Course Number</th>
+                <th>Title</th>
+                <th>Credits</th>
+                <th>Grade</th>
+            </tr>
+            {% for course in transcript.values() %}
+                <tr>
+                    <th>{{ course.cid }}</th>
+                    <th>{{ course.dept }}</th>
+                    <th>{{ course.cnum }}</th>
+                    <th>{{ course.title }}</th>
+                    <th>{{ course.cred }}</th>
+                    <th>{{ course.grade }}</th>
+                </tr>
+            {% endfor %}
+
+    </body>
+</html>

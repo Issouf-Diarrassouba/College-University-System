@@ -1,0 +1,40 @@
+<html>
+<head>
+    <link rel="stylesheet" href="../static/std_styl.css" />
+</head>
+<body class= "main_body">
+    <div class = "header">
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+    <h2>Search Result: {{name}}</h2>
+    <br/>
+        <br/>
+        <br/>
+    </div>
+    <a href = '/faculty'><button>Home</button></a>
+    <br />
+    <br />
+    <br/>
+    {% if applicants == None %}
+        <h3>No result found</h3>
+    {% else %}
+        <table>
+        <tr>
+            <th>ApplicantID</th>
+            <th>Name</th>
+            <th>View</th>
+        </tr>
+        {% for app in applicants%}
+            <tr>
+                <td>{{applicants[app]['uid']}}</td>
+                <td>{{applicants[app]['name']}}</td>
+                <td> <button><a href="/applicantDashboard/{{applicants[app]['uid']}}" >Applicant Page </a></button></td>
+                
+            </tr>
+        {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>

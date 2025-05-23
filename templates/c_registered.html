@@ -1,0 +1,52 @@
+<html>
+<head>
+    <link rel="stylesheet" href="../static/std_styl.css" />
+</head>
+<body class = "main_body">
+    <div class = "header">
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <h2>Course Registered</h2>
+        <br/>
+        <br/>
+        <br/>
+    </div>
+    <br />
+    <a href = '/student/{{id}}'><button>Home</button></a>
+    <a href = '/drop_all/{{id}}'><button>Drop All Course</button></a>
+    <br />
+    {% if catalogue == None %}
+        <h3>Nothing Registered yet</h3>
+    {% else %}
+        <table>
+        <tr>
+            <th>CourseID</th>
+            <th>DEPT</th>
+            <th>Course Number</th>
+            <th>Title</th>
+            <th>Credit Hour</th>
+            <th>loc</th>
+            <th>Day</th>
+            <th>Time</th>
+            <th>Instructor Name </th>
+        </tr>
+        {% for course in catalogue%}
+            <tr>
+                <th>{{catalogue[course]['cid']}}</th>
+                <th>{{catalogue[course]['dept']}}</th>
+                <th>{{catalogue[course]['cnum']}}</th>
+                <th>{{catalogue[course]['title']}}</th>
+                <th>{{catalogue[course]['cred']}}</th>
+                <th>{{catalogue[course]['loc']}}</th>
+                <th>{{catalogue[course]['day']}}</th>
+                <th>{{catalogue[course]['time']}}</th>
+                <th>{{catalogue[course]['ins_name']}}</th>
+                <th><a href = '/drop/{{catalogue[course]['cid']}}/{{id}}'><button>Drop</button></a></th>
+            </tr>
+        {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>

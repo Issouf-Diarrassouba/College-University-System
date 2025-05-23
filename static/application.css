@@ -1,0 +1,79 @@
+body {
+  background-color: #404044;
+  font-family: Monospace;
+}
+
+.container {
+  max-width: 600px; /* Reduce the max-width value to make the form smaller */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+form {
+  background-color: #186473;
+  padding: 20px; /* Reduce the padding value to make the form smaller */
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(13, 3, 3, 0.1);
+}
+
+h3 {
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #C3C4F8;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+input[type="submit"] {
+  background-color: #4caf50;
+  color: #1f1f20;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+ul.flashes {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+ul.flashes li {
+  background-color: #2f2424;
+  color: #ff0000;
+  padding: 8px;
+  margin-bottom: 8px;
+  border-radius: 5px;
+}
+
+h6 {
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.flash-error {
+  color: red;
+}
+
+.flash-success {
+  color: green;
+}
+
+select {
+  height: 30px;
+  border-radius: 5px;
+}

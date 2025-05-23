@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../static/std_styl.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body class = "main_body">
+
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}
+    <ul class=flashes>
+
+    {% for message in messages %}
+      <li class="norm_2">{{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+  
+
+    <a href="javascript:history.back()" class="btn btn-outline-primary"><button> Go Back </button></a>
+    <form action = "/createapplicant" method = "POST">
+
+	<h3 style="font-family: cursive"> Please Create An Applicant Account Below </h3>
+	<h2> Student </h2>
+	{% if x %}
+
+	<h5 style="font-family: cursive"> User Exists, Please Create a new account</h5>
+	
+	{% endif %}
+    <label class="norm_2">Email:</label>
+
+	<input type = "email" name = "email" placeholder = "Enter Email" required><br> 
+	
+	<label class="norm_2">Password:</label>
+
+	<input type = "text" name = "password" placeholder = "Enter Password" required><br> 
+    
+    <label class="norm_2">First Name :</label>
+
+    <input type = "text" name = "firstname" placeholder = "Enter firstname" required><br> 
+	
+	<label class="norm_2"> Last Name :</label>
+
+	<input type = "text" name = "lastname" placeholder = "Enter Lastname" required><br> 
+
+    <label class="norm_2"> Home Address :</label>
+    
+    <input type = "text" name = "address" placeholder = "Enter Address" required><br> 
+	
+    <label class="norm_2"> Social Security:</label>
+    
+    <input type = "number" name = "ssn" min = 100000000 max = 999999999 placeholder = "Enter Social Security Number" required><br> 
+
+	<label class="norm_2"> User Type:</label>
+	<input type = "text" name = "type_user" value = "Applicant" readonly><br>
+
+	<button type= "submit"> Create </button>
+
+	</form>
+	
+</body>
+</html>

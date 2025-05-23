@@ -1,0 +1,55 @@
+<!--------------------DOCUMENT DESCRIPTION------------------ 
+-This HTML shows how to change advisor for a student
+-Visible by: Admin, GA 
+--------------------DOCUMENT DESCRIPTION--------------------> 
+<html>
+    <head>
+        <link rel="stylesheet" href="../static/std_styl.css" />
+    </head>
+    <body class="main_body">
+        <div class = "header">
+        <center>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <h2>{{x.firstname}} {{x.lastname}} Directory</h2>
+          <br/>
+          <br/>
+          <br/>
+        </center>
+      </div>
+    <table>
+    <tr>
+        <th>Student Name</th>
+        <th>Advisor Name</th>
+        <th>Assign</th>
+    </tr>
+    <form action="/update_advisor/{{id}}" method="post">
+        <tr>
+            <td>
+                
+                {{y.firstname}} {{y.lastname}}
+                
+            </td>
+            <td>
+                {% for s in x %}
+                {% if s.advisor_id is not none %}{{s.advisor_fname}} {{s.advisor_lname}}{% else %}None{% endif %}
+                {% endfor %}
+            </td>
+            <td>
+                <select id="advisorName" name="advisorName" required>
+                    <option value="">Select an advisor</option>
+                    {% for a in advisors %}
+                    <option value="{{a.uid}}">{{a.firstname}} {{a.lastname}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+            <td>
+                <input type="submit" value="Assign">
+            </td>
+        </tr>
+    </form>
+  </table>
+</body>
+</html>

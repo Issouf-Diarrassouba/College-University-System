@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/std_styl.css" />
+
+    <title>Statistics</title>
+</head>
+<body class = "main_body">
+    <div class = "header">
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+    <h2>Statistics</h2>
+    <br/>
+        <br/>
+        <br/>
+    </div>
+    <a href = '/faculty'><button>Home</button></a>
+    <p>Total Applicants: {{ statistics.total_applicants }}</p>
+    <p>Total Admitted: {{ statistics.total_admitted }}</p>
+    <p>Total Rejected: {{ statistics.total_rejected }}</p>
+    <p>Average GRE Score for Admitted Applicants: {{ statistics.avg_gre_score }}</p>
+    <p>Average GRE Score for Admitted Applicants: {{ statistics.avg_vgre_score }}</p>
+    <p>Average GRE Score for Admitted Applicants: {{ statistics.avg_qgre_score }}</p>
+
+

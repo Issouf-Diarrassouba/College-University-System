@@ -1,0 +1,35 @@
+h1 {
+    font-family: "Courier New";
+    font-weight: bold;
+}
+h3{
+    font-family: "Courier New";
+}
+table{
+    border: 1px solid black;
+    border-spacing: 5px;
+}
+tr{
+    border: 1px solid black;
+    border-spacing: 5px;
+}
+td{
+    font-family: "Georgia";
+    font-weight: 150;
+    width: 7em;
+    line-height: 1.5em;
+    padding: 0.25em;
+    border: 1px dashed black;
+}
+th{
+    font-family: "Georgia";
+    font-weight: 200;
+    width: 7em;
+    line-height: 1.5em;
+    padding: 0.25em;
+    border: 1px dashed black;
+}
+button{
+    font-family: "Georgia";
+    font-weight: 200;
+}

@@ -1,0 +1,170 @@
+
+h1 span {
+    text-align: center;
+    font-family: "Arial";
+    font-weight: bold;
+    transform-origin: bottom;
+    height: 300px;
+    width: 50px;
+    left: 50;
+    top: 50;
+    position: absolute;
+    color : red;
+}
+.c1{
+    transform: rotate(-27deg);
+}
+.c2{
+    transform: rotate(-21deg);
+}
+.c3{
+    transform: rotate(-15deg);
+}
+.c4{
+    transform: rotate(-9deg);
+}
+.c5{
+    transform: rotate(-3deg);
+}
+.c6{
+    transform: rotate(3deg);
+}
+.c7{
+    transform: rotate(9deg);
+}
+.c8{
+    transform: rotate(15deg);
+}
+.c9{
+    transform: rotate(21deg);
+}
+.c10{
+    transform: rotate(27deg);
+}
+h2 {
+    text-align: center;
+    font-family: "Arial";
+    font-weight: 200;
+    font-style: italic
+}
+h3{
+    font-family: "Arial";
+    font-weight: 200;
+}
+table{
+    border: 1px solid black;
+    border-spacing: 5px;
+}
+tr{
+    border: 1px solid black;
+    border-spacing: 5px;
+}
+td{
+    font-family: "Georgia";
+    font-weight: 150;
+    width: 7em;
+    line-height: 1.5em;
+    padding: 0.25em;
+    border: 1px dashed black;
+}
+th{
+    font-family: "Georgia";
+    font-weight: 200;
+    width: 7em;
+    line-height: 1.5em;
+    padding: 0.25em;
+    border: 1px dashed black;
+}
+button{
+    height: 45px;
+    width: 150px;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 2px 0 2px 0;
+    transition: all 0.3s ease;
+    font-family: "Verdana";
+    font-weight: bold;
+    background-color: aliceblue;
+}
+button:hover{
+    background-color: black;
+    color:aliceblue;
+}
+li{
+    font-family: "Garamond";
+}
+
+a {
+    font-family: "Verdana";
+    font-weight: bold;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: blue;
+}
+a:hover{
+    color:red;
+}
+
+.home_link{
+    text-align: center;
+}
+
+img {
+    vertical-align: text-bottom;
+}
+.landing_page{
+    background-image: url("university-logo.png");
+    background-repeat: no-repeat;
+    background-size: 1000px,1000px;
+    background-position: left 50% top -100px;
+    background-color:#020475 ;
+}
+.login{
+    background-image: url("university-logo.png");
+    background-repeat: no-repeat;
+    background-size: 300px,300px;
+    background-position: right 0% top 0px;
+    background-color: #020475;
+}
+.login_box{
+    height: 180px;
+    width: 330px;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 2px 0 2px 0;
+    transition: all 0.3s ease;
+    font-family: "Verdana";
+    font-weight: bold;
+    background-color: aliceblue;
+    text-align: center;
+}
+input[type=submit]{
+    padding: 5px;
+    border-radius: 5px;
+    margin: 2px 0 2px 0;
+    transition: all 0.3s ease;
+    font-family: "Verdana";
+    font-weight: bold;
+    background-color: aliceblue;
+}
+input[type=submit]:hover{
+    background-color: black;
+    color:aliceblue;
+}
+.warning{
+    color:red;
+    font-family: "Verdana";
+    font-weight: bold;
+    font-size:large;
+}
+.small_button{
+    padding: 5px;
+    border-radius: 5px;
+    margin: 2px 0 2px 0;
+    transition: all 0.3s ease;
+    font-family: "Verdana";
+    font-weight: bold;
+    background-color: aliceblue;
+}

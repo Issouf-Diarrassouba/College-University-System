@@ -1,0 +1,43 @@
+<html>
+<head>
+    <link rel="stylesheet" href="../static/std_styl.css" />
+</head>
+<body class= "main_body">
+    <div class = "header">
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+    <h2>Search Result: {{name}}</h2>
+    <br/>
+        <br/>
+        <br/>
+    </div>
+    <a href = '/faculty'><button>Home</button></a>
+    <br />
+    <br />
+    <br/>
+    {% if students == None %}
+        <h3>No result found</h3>
+    {% else %}
+        <table>
+        <tr>
+            <th>Student ID</th>
+            <th>Name</th>
+            <th>View</th>
+        </tr>
+        {% for std in students%}
+            <tr>
+                <td>{{students[std]['uid']}}</td>
+                <td>{{students[std]['name']}}</td>
+                {% if session['user_type'] == "Systems Administrator"%}
+                    <td><a href = '/student/{{students[std]['uid']}}'><button>View</button></a></td>
+                {% elif session['faculty_type']['grad_sec'] ==1%}
+                    <td><a href = '/transcript/{{students[std]['uid']}}'><button>View</button></a></td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>

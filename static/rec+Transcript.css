@@ -1,0 +1,79 @@
+/* style.css */
+
+body {
+    background-color: #F1DAC4;
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  .container {
+    max-width: 20px;
+    margin:  2px;
+    padding: 20px;
+    background-color: #1e375d;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .alert2 {
+    padding: 20px;
+    margin: 5px;
+    color: #009720;
+    background-color: #000c57;
+  }
+  
+  h1, h2, h6 {
+    color: rgb(5, 5, 5);
+  }
+  
+  ul {
+    list-style-type: disc;
+    margin-left: 20px;
+  }
+  
+  form {
+    margin-bottom: 20px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid rgb(142, 124, 124);
+  }
+  
+  input[type="submit"] {
+    background-color: #150c43;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  button {
+    background-color: #4caf50;
+    color: rgb(15, 17, 109);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: rgb(116, 101, 101);
+  }
+  
+  p {
+    margin-bottom: 10px;
+  }
+  
+  .max-requests {
+    margin-top: 10px;
+    color: #f00;
+  }
+  

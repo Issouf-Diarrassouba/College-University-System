@@ -1,0 +1,38 @@
+<!--------------------DOCUMENT DESCRIPTION------------------ 
+-This HTML shows the students's personal info
+-They update their personal info here
+-Visible by: Admin, GA, Student
+--------------------DOCUMENT DESCRIPTION--------------------> 
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../static/std_styl.css" />
+        <title>{{ x.uid }} Information</title>
+    </head>
+			
+    <body class = "main_body"> 
+        <div class = "header">
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <h2>{{ x.firstname }} Personal Information</h2>
+            <br/>
+            <br/>
+            <br/>
+        </div>
+        <center>
+        <label class = "norm_l">User ID: {{ x.uid }}</label>
+        <form method="POST" action="{{ url_for('update_student', id=x.uid) }}">
+            <label for="fname" class = "norm_2">First Name:</label>
+            <input type="text" name="firstname" pattern="[A-Za-z]+" value="{{ x.firstname }}" required><br><br>
+            <label for="lname" class="norm_2">Last Name:</label>
+            <input type="text" name="lastname" pattern="[A-Za-z\- ]+" value="{{ x.lastname }}" required><br><br>
+            <label for="email" class= "norm_2">Email:</label>
+            <input type="email" name="email" value="{{ x.email }}" required><br><br>
+            <input type="submit" value="Update">
+        </form>
+        </center>
+    </body>
+</html>

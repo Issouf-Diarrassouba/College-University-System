@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/std_styl.css" />
+    <title>Applicant List</title>
+</head>
+<body class ="main_body">
+    <div class = "header">
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+    <h2>Applicant List</h2>
+        <br/>
+        <br/>
+        <br/>
+    </div>
+    <br/>
+    <a href = '/faculty'><button>Home</button></a>
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Semester</th>
+                <th>StudentID</th>
+                <th>Year</th>
+                <th>Degree Type</th>
+                <!-- Add more table headers for other applicant information -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for generates in generate %}
+                <tr>
+                    <td>{{ generates['firstname'] }}</td>
+                    <td>{{ generates['lastname'] }}</td>
+                    <td>{{generates['studentUID'] }}</td>
+                    <td>{{ generates['appYear'] }}</td>
+                    <td>{{ generates['semester'] }}</td>
+                    <td>{{ generates['degreeType'] }}</td>
+                    
+                    <!-- Add more table cells for other applicant information -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

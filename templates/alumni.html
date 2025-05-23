@@ -1,0 +1,112 @@
+<!--------------------DOCUMENT DESCRIPTION------------------ 
+-This HTML shows a table of all the alumni with their info
+-Hold link to their directory
+-Visible by: Adimin, GA
+--------------------DOCUMENT DESCRIPTION--------------------> 
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../static/std_styl.css" />
+        <title>Alumni</title>
+    </head>
+
+    <body class = "main_body">
+        <div class="header">
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <h2>All Alumni</h2>
+            <br/>
+            <br/>
+            <br/>
+        </div>
+        {% if user_type == 'Systems Administrator' %}
+        <a href = "/faculty"><button> go back </button></a>
+        {% endif %}
+
+        <form action = "/alumni" method = "POST">
+            <label class = "norm_l">Filter by: </label>
+            <select id="Degree" name="Degree" required>
+                <option value="">Select Degree </option>
+                <option value="PhD">PhD</option>
+                <option value="Masters">Masters</option>
+                <option value="all">View All</option>
+            </select>
+            <select id="Year" name="Year" required>
+                <option value="">Select a Graduation Year </option>
+                {%for k in years%}
+                <option value="{{k.gradYear}}">{{k.gradYear}}</option>
+                {%endfor%}
+                <option value="all">View All</option>
+            </select>
+            <select id="sem" name="sem" required>
+                <option value="">Select a Graduation Semester </option>
+                {%for i in sems%}
+                <option value="{{i.gradSem}}">{{i.gradSem}}</option>
+                {%endfor%}
+                <option value="all">View All</option>
+            </select>
+
+        <button type= "submit"> Filter </button>
+        </form>
+
+        <table id = 'myTable'>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Alumni Directory</th>
+                    <th>Graduation Sem/Year</th>
+                    <th>Degree</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in x %}
+                <tr>
+                    <td>{{s.firstname}} {{s.lastname}}</td>
+                    <td>{{s.uid}}</td>
+                    <td>{{s.email}}</td>
+                    <td><a href="/alumnidirectory/{{s.uid}}">View Alumni Directory</a></td>
+                    <td>{%if s.gradSem == 'S'%}Spring{%else%}Fall{%endif%} {{s.gradYear}}</td>
+                    <td>{{s.enrolledas}}</td>
+                </tr>
+                {% endfor %}
+                {%if x == []%}
+                <h3>Sorry, no alumni fufil your query requests</h3>
+                {%endif%}
+            </tbody>
+        </table>
+
+        {% if user_type == 'Systems Administrator' %}
+        <p><a href = "/faculty"> go back </a> </p>
+        <button onclick="downloadTable()">Download Alumni Table</button>
+        {% endif %}
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+        <script>
+          function downloadTable() {
+            var table = document.getElementById("myTable");
+      
+            // Use HTML2Canvas to capture the table as an image
+            html2canvas(table).then(function(canvas) {
+              // Convert the canvas to a PNG image
+              var imgData = canvas.toDataURL('image/png');
+      
+              // Create a download link for the PNG file
+              var link = document.createElement('a');
+              link.href = imgData;
+              link.download = 'table.png';
+      
+              // Add the link to the document and click it to download the file
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+            });
+          }
+        </script>
+
+    </body>
+</html>

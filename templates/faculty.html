@@ -1,0 +1,117 @@
+<!--------------------DOCUMENT DESCRIPTION------------------ 
+-This HTML shows the home page, with everything
+-Visible by: Admin, GA?
+--------------------DOCUMENT DESCRIPTION--------------------> 
+
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="stylesheet" href="../static/std_styl.css" />
+    <title>home page</title>
+  </head>
+
+  <body class = "main_body">
+    <div class = "header">
+      <br/>
+        <br/>
+        <br/>
+        <br/>
+      <h2>Home Page</h2>
+      <br/>
+        <br/>
+        <br/>
+    </div>
+
+
+    <h3 class = "norm_l">Welcome {{ session['email'] }}</h3>
+    <ul>
+
+        {% if user_type == 'Systems Administrator'%}
+          <form action="/studentSearch" method="POST">
+
+            <li><label class = "norm_l">Enter student name or ID</label>
+            <input type = "text" name = "name">
+            <input type = "submit" value = "Student Search"></li>
+            <!-- <button>Transcript Search</button> -->
+          </form>
+          <form action="/applicantSearch" method="POST">
+
+            <li><label class = "norm_l">Enter applicant name or ID</label>
+            <input type = "text" name = "name">
+            <input type = "submit" value = "Applicant Search"></li>
+            <!-- <button>Transcript Search</button> -->
+          </form>
+          <li><a href="/generate_statistics/{{session['id']}}"> Generated Statistics OF Applicants </a></li>
+        <li><a href="/generate_applicant_list/{{session['id']}}"> List of Graduate Applicants </a></li>
+        <li><a href="/generate_admitted_list/{{session['id']}}"> List of Admitted Applicants </a></li>
+        <li><a href="/pendingreview"> View Applicants Applications </a></li>
+        <li><a href="/students"> View Students </a></li>
+        <li><a href = "/facultyviewstudents"> View Student Forms</a></li>
+        <li><a href="/alumni"> View Alumni </a></li>
+        <li><a href="/createapplicant"> Create New Applicant </a></li>
+        <li><a href="/createstudent"> Create New Student User </a></li>
+        <li><a href="/createfaculty"> Create New Faculty User </a></li>
+
+        
+        {% elif faculty_type.grad_sec %}
+        <form action="/studentSearch" method="POST">
+          <li><label class = "norm_l">Enter student name or ID</label>
+          <input type = "text" name = "name">
+          <input type = "submit" value = "Student Search"></li>
+          <!-- <button>Transcript Search</button> -->
+        </form>
+
+        <form action="/applicantSearch" method="POST">
+
+          <li><label class = "norm_l">Enter student name or ID</label>
+          <input type = "text" name = "name">
+          <input type = "submit" value = "Applicant Search"></li>
+          <!-- <button>Transcript Search</button> -->
+        </form>
+        <li><a href="/generate_statistics/{{session['id']}}"> Generated Statistics OF Applicants </a></li>
+        <li><a href="/generate_applicant_list/{{session['id']}}"> List of Graduate Applicants </a></li>
+        <li><a href="/generate_admitted_list/{{session['id']}}"> List of Admitted Applicants </a></li>
+        <li><a href="/pendingreview"> View Applicants Applications </a></li>
+        <li><a href="/facultyviewstudents"> View Students </a></li>
+        {% elif faculty_type.advisor%}
+        <li><a href="/facultyviewstudents"> View Students Matches</a></li>
+      
+
+        {% elif faculty_type.cac%}
+        <form action="/applicantSearch" method="POST">
+
+          <li><label class = "norm_l">Enter student name or ID</label>
+          <input type = "text" name = "name">
+          <input type = "submit" value = "Applicant Search"></li>
+          <!-- <button>Transcript Search</button> -->
+        </form>
+        <li><a href="/pendingreview"> View Applications </a></li>
+        
+
+        {% elif faculty_type.reviewer%}
+        <form action="/applicantSearch" method="POST">
+
+          <li><label class = "norm_l">Enter student name or ID</label>
+          <input type = "text" name = "name">
+          <input type = "submit" value = "Applicant Search"></li>
+          <!-- <button>Transcript Search</button> -->
+        </form>
+        <li><a href="/pendingreview"> View Applications </a></li>
+        {% endif %}
+
+
+        <li><a href="/pendingreview"> View Applications </a></li>
+
+        <li><a href="/c_catalogue/{{session['id']}}"> View Courses </a></li>
+
+
+        {%if user_type == 'Systems Administrator' or faculty_type.grad_sec%}
+          <li><a href="/asmatch"> View Advisors/Student Assignments </a></li>
+
+          <li><a href="/gradrequests"> View Graduation Requests </a></li>
+        {%endif%}
+
+    </ul>
+    <p><a href = "/logout"> logout </a></p>
+  </body>
+</html>

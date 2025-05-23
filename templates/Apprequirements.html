@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+	<title> Student </title>
+  <link rel="stylesheet" href="../static/std_styl.css" /></head>
+  
+  
+<body>
+  <body class = 'main_body'>
+    <div class = "header">
+      <br/>
+      <br/>
+
+      <br/>
+
+      <br/>
+
+  {% if session['id'] != None :  %}
+  <h2> Hello: {{session['firstname']}} {{session['lastname']}}</h2>
+{% endif  %}
+
+      <br/>
+      <br/>
+      <br/>
+    </div>
+
+  {% for message in get_flashed_messages() %}
+    <div class="alert2" >{{message}}</div>
+  {% endfor %}
+ 
+  <h4>Current Application Status: {{status['status']}} </h4>
+  {% if status['status'] == 'Admit'%}
+    <br>
+    Admit type: {{app['decision']}}
+    <br>
+    Advisor: {{app['recommendedadvisor']}}
+  {% endif %}
+
+	</form>
+	
+  
+<h1>
+</h1>
+
+  <button><a href="/application" > Start Application </a></button>
+  <button><a href="/viewapplication" > View Application</a></button>  <br>
+  <br>
+  <button><a href="/editapplication" > Edit Application</a></button>
+  <button><a href="/sendtranscript/" > Start Transcript</a></button>  <br>
+  <button><a href="/sendletters/" > Start Recommendation</a></button>  <br>
+  <button><a href="/applicantDashboard/{{session['id']}}" >Return Back Home </a></button>
+  <br>
+    <form method="POST", action="/Apprequirements/submit">
+    <input type="submit" value="Submit"> 
+    </form> 
+    <br>
+  <form action="/logout">
+    <input type="submit" value="Sign out" />
+    
+</body>
+</html>

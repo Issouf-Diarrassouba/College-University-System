@@ -1,0 +1,44 @@
+<!--------------------DOCUMENT DESCRIPTION------------------ 
+    -This HTML shows the students's personal info
+    -They update their personal info here
+    -Visible by: Admin, GA, Student
+    --------------------DOCUMENT DESCRIPTION--------------------> 
+    
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <link rel="stylesheet" href="../static/std_styl.css">
+
+            <title>{{ x.uid }} Information</title>
+
+        </head>
+        
+                
+        <body class = 'main_body'>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+            <h2>{{ x.firstname }} Personal Information</h2>
+            <br/>
+            <br/>
+            <br/>
+            <li>User ID: {{ ID }}</li>
+            
+            <form method="POST" action="{{ url_for('update_applicant', ID=x.uid) }}">
+                <label for="fname">First Name:</label>
+                <input type="text" name="firstname" pattern="[A-Za-z]+" value="{{ x.firstname }}" required><br><br>
+                <label for="lname">Last Name:</label>
+                <input type="text" name="lastname" pattern="[A-Za-z\- ]+" value="{{ x.lastname }}" required><br><br>
+                <label for="email">Email:</label>
+                <input type="email" name="email" value="{{ x.email }}" required><br><br>
+
+                <input type="submit" value="Update">
+            </form>
+            <button><a href="/applicantDashboard/{{session['id']}}" >Return Back Home </a></button>
+
+        </body>
+
+
+    </html>
+    

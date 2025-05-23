@@ -1,0 +1,67 @@
+<!--------------------DOCUMENT DESCRIPTION------------------ 
+-This HTML shows the table of all the admin-student matchups
+-They can redirect to change advisor here
+-Visible by: Admin, GA 
+--------------------DOCUMENT DESCRIPTION--------------------> 
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../static/std_styl.css" />
+        <title>Students and Advisors</title>
+    </head>
+
+    <body class = "main_body">
+        <div class = "header">
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <h2>Advisor Assignments</h2>
+            <br/>
+            <br/>
+            <br/>
+        </div>
+        <form action = "/asmatch" method = "POST">
+            <select id="advisorName" name="advisorName" required>
+                <option value="">Select an advisor</option>
+                {% for a in advisors %}
+                <option value="{{a.uid}}">{{a.firstname}} {{a.lastname}}</option>
+                {% endfor %}
+                <option value="all">View All</option>
+            </select>
+            <input type="submit" value="Filter">
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Student Name</th>
+                    <th>Advisor</th>
+                    <th>Change Advisor</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for i in range(length)%}
+                <tr>
+                    <td>{{y[i].uid}}</td>
+                    <td>{{y[i].stu_fname}} {{y[i].stu_lname}}</td>
+                    {%if y[i].advisor_id == None%}
+                        <td>None</td>
+                    {%else%}
+                        {%set count = {'count': 0} %}
+                        {%for k in x%}
+                            {%if y[i].advisor_id == k.advisor_uid and count.count == 0 %}
+                            <td>{{k.advisor_fname}} {{k.advisor_lname}}</td>
+                            {%if count.update({'count': count.count+1})%}{%endif%}
+                            {%endif%}
+                        {%endfor%}
+                    {%endif%}
+                    <td><a href="/changeadvisor/{{y[i].uid}}">Change Advisor</a></td>
+                </tr>
+                {%endfor%}
+                
+            </tbody>
+        </table>
+        <p><a href = "/faculty"> return </a> </p>
+    </body>
+</html>

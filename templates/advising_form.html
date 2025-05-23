@@ -1,0 +1,100 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../static/std_styl.css" />
+    <title>Form 1</title>
+  </head>
+
+  <body class = "main_body">
+    <div class = "header">
+      <br/>
+        <br/>
+        <br/>
+        <br/>
+    <h2>Advising form</h2>
+    <br/>
+        <br/>
+        <br/>
+    </div>
+    <br/>
+    <a href = "/student/{{id}}"><button>Home</button></a>
+    {% if status['form_status'] == 1%}
+    <label>Advising Form Approved</label>
+    {% elif status['advising_status'] == 1 %}
+    <label>Adivising Form Submitted, Waiting For Approve</label>
+    {% else %}
+
+    <form action="/advising_form/{{id}}" method="POST">
+        <table>
+          <tbody>
+            <tr>
+              <tbody>
+                {% for s in student %}
+                <tr>
+                  <td><input type="text" name="user_id" value="{{s.uid}}" readonly></td>
+                  <td><input type="text" name="lname" value="{{s.lastname}}" readonly></td>
+                  <td><input type="text" name="fname" value="{{s.firstname}}" readonly></td>
+                </tr>
+              {% endfor %}
+              </tbody>
+              
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <table>
+          <thead>
+            <tr>
+              <th>Courses In Program:</th>
+              <th>DEPT/SUBJECT</th>
+              <th>Course Number</th>
+            </tr>
+          </thead>
+          <tbody id="course-table-body">
+            <tr>
+           
+            </tr>
+          </tbody>
+        </table>
+        <button type="button" onclick="addCourse()">Add Course</button>
+        <br>
+        <button type="submit">Submit</button>
+      </form>
+    {% endif %}
+      <script>
+      // let rowCount = 1;
+      function addCourse() {
+  var tableBody = document.getElementById("course-table-body");
+  var rowCount = tableBody.rows.length;
+
+  if (rowCount >= 13) {
+    document.getElementById("add-course-btn").disabled = true;
+    return;
+  }
+
+  var newRow = tableBody.insertRow(rowCount);
+  newRow.innerHTML = '<td><button type="button" onclick="removeCourse(this)">Remove</button></td>' +
+                     '<td>' +
+                     '<select name="dept_subject_' + rowCount + '">' +
+                     '{% for departments in courses_dept %}' +
+                     '<option value="{{ departments.dept }}">{{ departments.dept }}</option>' +
+                     '{% endfor %}' +
+                     '</select>' +
+                     '</td>' +
+                     '<td>' +
+                     '<select name="course_number_' + rowCount + '">' +
+                     '{% for num in courses_number %}' +
+                     '<option value="{{ num.cnum }}">{{ num.cnum }}</option>' +
+                     '{% endfor %}' +
+                     '</select>' +
+                     '</td>';
+}
+
+function removeCourse(button) {
+  var row = button.parentNode.parentNode;
+  row.parentNode.removeChild(row);
+}
+    
+      </script>
+      
+  </body>
+</html>

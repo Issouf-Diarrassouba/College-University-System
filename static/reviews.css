@@ -1,0 +1,46 @@
+/* CSS styles for the review layout */
+body {
+    font-family: Arial, sans-serif;
+    margin: 10px;
+  }
+  
+  .review-section {
+    margin-bottom: 9px;
+    width: auto;
+    border: 1px solid rgb(30, 26, 26);
+    padding: 10px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 20;
+  }
+  
+  li {
+    margin-bottom: 5px;
+  }
+  
+  .form-section {
+    border: 10px solid rgb(42, 62, 103);
+    padding: 10px;
+    margin-bottom: 14px;
+    font-size: 14px;
+  }
+  
+  .form-section h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .form-section ul {
+    margin-left: 20px;
+  }
+  
+  .form-section ul li {
+    list-style-type: disc;
+  }
+  

@@ -1,0 +1,37 @@
+<!--------------------DOCUMENT DESCRIPTION------------------ 
+-Success Message
+--------------------DOCUMENT DESCRIPTION-------------------->  
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../static/std_styl.css" />
+        <title>
+            Student Thesis
+        </title>
+    </head>
+
+    <body class = "main_body">
+        <div class = "header">
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+
+            <h2>Student Thesis</h2>
+
+            <br/>
+            <br/>
+            <br/>
+        </div>
+        <li>Thesis:{{x.thesis}}</li>
+        {% if x.approved == 1 %}
+        <label>Thesis Approved</label><br/>
+        {% else %}
+        <a href = '/approvehere/{{x.uid}}'>Approve Here</a> <br/>
+        {% endif %}
+        <a href = "/facultyviewstudents">return to all students</a>
+
+    </body>
+</html>
+

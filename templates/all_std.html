@@ -1,0 +1,68 @@
+<html>
+<head>
+    <link rel="stylesheet" href="../static/std_styl.css" />
+    <link rel="stylesheet" href="../static/css/c_cata.css" />
+</head>
+<body class= "main_body">
+    <div class ="header">
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <h2>All student in {{course}}</h2>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+    </div>
+    <br/>
+    <a href = "/c_catalogue/{{session['id']}}"><button>Course Catalogue</button></a>
+    <br />
+    <br />
+    <br/>
+    {% if students == None %}
+        <h3>No one in the Class</h3>
+    {% else %}
+        <table>
+        <tr>
+            <th>Student ID</th>
+            <th>Name</th>
+            <th>Final Grade</th>
+        </tr>
+        {% for std in students%}
+            <tr>
+                <td>{{students[std]['uid']}}</td>
+                <td>{{students[std]['name']}}</td>
+                {% if students[std]['fgrade'] != "IP"%}
+                    <td>{{students[std]['fgrade']}}</td>
+                {% else %}
+                <td>
+                    <form  action = "/AssignGrades2/{{cid}}" method = "POST">
+                        <input type = "hidden" value = {{cid}}, name = "cid">
+                        <input type = "hidden" value = {{students[std]['uid']}}, name = "uid">
+                        <select name = "grade" onchange="this.form.submit()">
+                            <option selected="selected" hidden="hidden">{{cid}}</option>
+                            <option value="IP">IP</option>
+                            <option value="A+">A+</option>
+                            <option value="A">A</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B">B</option>
+                            <option value="B-">B-</option>
+                            <option value="C+">C+</option>
+                            <option value="C">C</option>
+                            <option value="C-">C-</option>
+                            <option value="D+">D+</option>
+                            <option value="D">D</option>
+                            <option value="D-">D-</option>
+                            <option value="F">F</option>
+                        </select>
+                    </form>
+                </td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>

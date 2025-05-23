@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/reviews.css">
+    <title>View Application Form Submitted</title>
+    
+</head>
+
+<body>
+    <h1>Application Response</h1>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    
+    {% for info in information %}
+        <div class="review-section">
+            <div class="form-section">
+                <h2>Personal Information:</h2>
+                <ul>
+                    <li>Application was completed on {{ info['datesubmitted'] }}</li>
+                    <li>Gender Selected was: {{ info['gender'] }}</li>
+                    <li>Given Address is: {{ info['address'] }}, {{ info['zipcode'] }}</li>
+                </ul>
+            </div>
+            
+            <div class="form-section">
+                <h2>Educational Background:</h2>
+                <ul>
+                    <li>Areas of Interest: {{ info['areasofinterest'] }}</li>
+                    <li>Experience: {{ info['experience'] }}</li>
+                    <li>You have previously received a {{ info['priordegrees'] }} degree at {{ info['university'] }}.</li>
+                    <li>During the year of {{ info['gradyear'] }}, you graduated with a {{ info['gpa'] }} GPA, majoring in {{ info['major'] }}</li>
+                </ul>
+            </div>
+            
+            <div class="form-section">
+                <h2>Application Details:</h2>
+                <ul>
+                    <li>You Are Applying For the: {{ info['appYear'] }}, {{ info['semester'] }} term</li>
+                    <li>You Are Pursuing a {{ info['degreeType'] }}</li>
+                </ul>
+                
+                <h3>Scores:</h3>
+                <ul>
+                    <li>TOEFL Score: {{ info['TOEFLScore'] }}, taken in {{ info['TOEFLdate'] }}</li>
+                    <li>GRE Verbal Score: {{ info['GREVerbal'] }}</li>
+                    <li>GRE Quantitative: {{ info['GREQuantitative'] }}</li>
+                    <li>GRE Advanced: {{ info['GREAdvanced'] }}, {{ info['GRESubject'] }}, {{ info['GREYEar']}}
+                   
+
+                    </div>
+                    {% endfor %}
+                    <button><a href="/Apprequirements"> Back To Applicant Requirements</a></button>
+                </body>
+                
+                </html>

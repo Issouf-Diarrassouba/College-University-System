@@ -1,0 +1,43 @@
+
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="../static/landing_page.css" />
+  </head>
+  <body class = "login">
+    
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+   <center>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-danger" role="alert" style = "color: red"> {{ message }}</div>
+      {% endfor %}
+    {% endif %}
+   {% endwith %}
+   <div class="login_box">
+    <form action = "/login" method = "POST">
+      <br />
+      <label> Email: </label>
+      <input type = "text" name = "email"> <br>
+      <label> Password: </label>
+      <input type = "password" name = "password"> <br />
+      <input type = "submit" name = "submit" class = "submit">
+    </form>
+    <a href = '/'><button>Back to Homepage</button></a>
+  </div>
+</center>
+  </body>

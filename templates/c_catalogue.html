@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../static/std_styl.css" />
+    </head>
+    <body class = "main_body">
+        <div class = "header">
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <h2>Course Catalogue</h2>
+            <br/>
+            <br/>
+            <br/>
+        </div>
+        {% if form_status == 0 %}
+            <label class = "warning">Cannot register, advising from need to be approved</label>
+        {% endif %}
+        {% if able_reg == 1%}
+        <a href = "/student/{{id}}"><button>Home</button></a>
+        {% else %}
+        <a href = "/faculty"><button>Home</button></a>
+        {% endif %}
+        {% if search == 1 %}
+            <a href='/c_catalogue/{{id}}'><button>Catalogue</button></a>
+        {% endif %}
+        <br />
+        <br />
+        <form action = "/c_catalogue/{{id}}" method = 'POST'>
+            <label class = "norm_l">Search by Course ID: </label>
+            <input type = 'text'  name = 'c_id'>
+            <input type = 'submit' value = 'search'>
+        </form>
+        <br/>
+        {% if catalogue == NULL %}
+            <h3>Nothing in Catalogue yet</h3>
+        {% else %}
+            <table>
+            <tr>
+                <th>CourseID</th>
+                <th>DEPT</th>
+                <th>Course Number</th>
+                <th>Title</th>
+                <th>Credit Hour</th>
+                <th>loc</th>
+                <th>Day</th>
+                <th>Time</th>
+                <th>Prerequisite 1</th>
+                <th>Prerequisite 2</th>
+                <th>Instructor Name </th>
+            </tr>
+            {% for course in catalogue%}
+                <tr>
+                    {% if 'faculty_type' in session %}
+                    <td><a href = '/all_std/{{catalogue[course]['cid']}}'><button>{{catalogue[course]['cid']}}</button></a></td>
+                    {% else %}
+                    <td>{{catalogue[course]['cid']}}</td>
+                    {% endif %}
+                    <td>{{catalogue[course]['dept']}}</td>
+                    <td>{{catalogue[course]['cnum']}}</td>
+                    <td>{{catalogue[course]['title']}}</td>
+                    <td>{{catalogue[course]['cred']}}</td>
+                    <td>{{catalogue[course]['loc']}}</td>
+                    <td>{{catalogue[course]['day']}}</td>
+                    <td>{{catalogue[course]['time']}}</td>
+                    <td>{{catalogue[course]['prone']}}</td>
+                    <td>{{catalogue[course]['prtwo']}}</td>
+                    <td>{{catalogue[course]['ins_name']}}</td>
+                    {% if (session['user_type'] == "Student" or session['user_type'] == "Systems Administrator") and form_status == 1 and able_reg==1%}
+                    <td><a href = '/register/{{catalogue[course]['cid']}}/{{id}}'><button>Register</button></a></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            </table>
+        {% endif %}
+    </body>
+</html>

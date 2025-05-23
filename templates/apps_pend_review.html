@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <link rel="stylesheet" href="../static/std_styl.css" />
+  <title>KICKZ ZONE</title>                
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/static/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class = "main_body">
+
+  <!-- dont we need to link this page into the workers home page?  -->
+    <div class="header">
+      <br/>
+        <br/>
+        <br/>
+        <br/>
+        <h2>Application Pending Review</h2>
+        <br/>
+        <br/>
+        <br/>
+    </div>
+    <a href = "javascript:history.back()"><button>Back</button></a><br />
+    {% if session['id'] != None: %}
+
+    
+
+    <h3>Needs Reviewing</h3>
+
+  <ul>
+    
+    {% if rev != None:%}
+      {% for i in rev %}
+     
+
+      <li><a href= "/appreview/{{i['studentUID']}}">{{i['firstname']}} {{i['lastname']}}</a></li> 
+
+
+      <li>UniversityID:{{i['studentUID']}}</li>
+
+      {% endfor %}
+    {% else: %}
+      None left to review.
+    {% endif %}
+
+
+  </ul>
+  <h3> Previously Reviewed </h3>
+  <ul>
+    {% if prevreviewed != None:%}
+      {% for i in prevreviewed %}
+      <a href= "/appreview/{{i['studentUID']}}"> 
+      <li>{{i['firstname']}} {{i['lastname']}}</li> </a>
+      <li>UniversityID:{{i['studentUID']}}</li>
+    
+      {% endfor %}
+    {% else: %}
+      None left to review.
+    {% endif %}
+      {% else: %}
+      <h2>Error you must be logged-In to review the application</h1>
+      
+      {% endif %}  
+    </u>
+
+    <button><a href= "/logout"> logout </a></button>
+  </body>
+  </html>
+  

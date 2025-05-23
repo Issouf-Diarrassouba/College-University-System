@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>log in</title>
+	<link href="/static/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+
+
+	<h3 style="font-family: cursive"> staff login  Log-In  </h3>
+	
+{% if l == 1 %}
+
+	<h5 style="font-family: cursive"> Incorrect Username or Password</h5>
+  	<h5 style="font-family: cursive"> Please Try Again</h5>
+	
+	{% endif %}
+
+
+	<form action = "/Stafflog" method = "POST">
+
+
+		
+	<h3	style="font-family: cursive"> 
+
+    <label> Email: </label>
+
+
+		<input type = "text" name = "workeremail" placeholder = "email" ><br>
+
+		<label>Password:</label>
+
+		<input type = "text" name = "workerpassword" placeholder = "password"><br> 
+
+
+  </h3>
+
+		<input type = "submit" name = "submit">
+    
+	</form>
+
+	<button><a href= "/"> home </a></button>
+
+</body>
+</html>
